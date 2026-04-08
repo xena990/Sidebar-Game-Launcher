@@ -1,6 +1,6 @@
 using System.Windows.Forms;
 
-namespace XpSidebarLauncher
+namespace SidebarGameLauncher
 {
     internal sealed class BufferedListView : ListView
     {
@@ -21,3 +21,4 @@ namespace XpSidebarLauncher
         }
     }
 }
+

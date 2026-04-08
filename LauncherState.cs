@@ -5,7 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace XpSidebarLauncher
+namespace SidebarGameLauncher
 {
     internal struct WindowStateData
     {
@@ -265,7 +265,7 @@ namespace XpSidebarLauncher
     internal static class StartupRegistration
     {
         private const string RunKeyPath = "Software\\Microsoft\\Windows\\CurrentVersion\\Run";
-        private const string RunValueName = "XpSidebarLauncher";
+        private const string RunValueName = "SidebarGameLauncher";
 
         public static bool IsEnabled()
         {
@@ -314,3 +314,4 @@ namespace XpSidebarLauncher
         }
     }
 }
+

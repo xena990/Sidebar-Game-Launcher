@@ -6,8 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{2A5E6E18-A166-4D7A-91DD-B95C2DB29465}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>XpSidebarLauncher</RootNamespace>
-    <AssemblyName>XpSidebarLauncher</AssemblyName>
+    <RootNamespace>SidebarGameLauncher</RootNamespace>
+    <AssemblyName>Sidebar Game Launcher</AssemblyName>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="AppIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

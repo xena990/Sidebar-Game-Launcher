@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XpSidebarLauncher", "XpSidebarLauncher.csproj", "{2A5E6E18-A166-4D7A-91DD-B95C2DB29465}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SidebarGameLauncher", "SidebarGameLauncher.csproj", "{2A5E6E18-A166-4D7A-91DD-B95C2DB29465}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

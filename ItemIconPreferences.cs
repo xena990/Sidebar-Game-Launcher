@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace XpSidebarLauncher
+namespace SidebarGameLauncher
 {
     internal enum ItemIconMode
     {
@@ -141,3 +141,4 @@ namespace XpSidebarLauncher
         }
     }
 }
+

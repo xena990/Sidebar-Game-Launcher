@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 
-namespace XpSidebarLauncher
+namespace SidebarGameLauncher
 {
     internal sealed class LaunchBoxIconService
     {
@@ -1390,7 +1390,7 @@ namespace XpSidebarLauncher
                 request.Method = "GET";
                 request.Timeout = 6000;
                 request.ReadWriteTimeout = 6000;
-                request.UserAgent = "XpSidebarLauncher/1.0";
+                request.UserAgent = "SidebarGameLauncher/1.0";
 
                 using (var response = (HttpWebResponse)request.GetResponse())
                 using (var stream = response.GetResponseStream())
@@ -1425,3 +1425,4 @@ namespace XpSidebarLauncher
         }
     }
 }
+

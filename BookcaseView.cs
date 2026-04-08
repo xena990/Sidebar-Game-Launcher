@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 
-namespace XpSidebarLauncher
+namespace SidebarGameLauncher
 {
     internal sealed class BookcaseItem
     {
@@ -433,3 +433,4 @@ namespace XpSidebarLauncher
         }
     }
 }
+

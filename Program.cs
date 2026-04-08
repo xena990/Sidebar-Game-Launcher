@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace XpSidebarLauncher
+namespace SidebarGameLauncher
 {
     static class Program
     {
@@ -14,3 +14,4 @@ namespace XpSidebarLauncher
         }
     }
 }
+

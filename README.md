@@ -1,4 +1,4 @@
-# XP Sidebar Game Launcher
+# Sidebar Game Launcher
 
 A sidebar launcher inspired by classic Windows XP folder toolbars.
 
@@ -23,7 +23,7 @@ Tray actions:
 
 ## Persistence
 
-Saved automatically in `%APPDATA%\\XpSidebarLauncher\\settings.ini`:
+Saved automatically in `Data\\settings.ini` (portable, next to exe):
 - Last selected folder
 - Sidebar position (Left/Top)
 - Sidebar size (Width/Height)
@@ -50,8 +50,8 @@ Saved automatically in `%APPDATA%\\XpSidebarLauncher\\settings.ini`:
 Use MSBuild:
 
 ```powershell
-& 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe' 'XpSidebarLauncher.csproj' /t:Rebuild /p:Configuration=Release /p:Platform=x86
+& 'C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe' 'SidebarGameLauncher.csproj' /t:Rebuild /p:Configuration=Release /p:Platform=x86
 ```
 
 Output:
-- `bin\\Release\\XpSidebarLauncher.exe`
+- `bin\\Release\\Sidebar Game Launcher.exe`

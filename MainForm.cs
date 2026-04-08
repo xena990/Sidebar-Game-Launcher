@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace XpSidebarLauncher
+namespace SidebarGameLauncher
 {
     public class MainForm : Form
     {
@@ -79,7 +79,7 @@ namespace XpSidebarLauncher
             contextMenuPath = string.Empty;
             visualStyle = "sidebar";
 
-            Text = "XP Sidebar Launcher";
+            Text = "Sidebar Game Launcher";
             StartPosition = FormStartPosition.Manual;
             ShowInTaskbar = false;
             TopMost = true;
@@ -220,7 +220,7 @@ namespace XpSidebarLauncher
             bookcaseView.ContextMenuStrip = itemMenu;
 
             trayIcon = new NotifyIcon();
-            trayIcon.Text = "XP Sidebar Launcher";
+            trayIcon.Text = "Sidebar Game Launcher";
             trayIcon.Icon = SystemIcons.Application;
             trayIcon.Visible = true;
             trayIcon.ContextMenuStrip = trayMenu;
@@ -1526,3 +1526,4 @@ namespace XpSidebarLauncher
         }
     }
 }
+

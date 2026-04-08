@@ -1,11 +1,11 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("XpSidebarLauncher")]
+[assembly: AssemblyTitle("Sidebar Game Launcher")]
 [assembly: AssemblyDescription("XP-style folder toolbar game launcher")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("XpSidebarLauncher")]
+[assembly: AssemblyProduct("Sidebar Game Launcher")]
 [assembly: AssemblyCopyright("Copyright (c) 2026")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -15,3 +15,5 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+
