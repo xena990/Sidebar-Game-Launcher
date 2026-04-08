@@ -1,6 +1,14 @@
 # Sidebar Game Launcher
 
+<p align="center">
+  <img src="assets/sidebar-logo.png" alt="Sidebar Game Launcher Icon" width="180" />
+</p>
+
 A sidebar launcher inspired by classic Windows XP folder toolbars.
+
+## Preview
+
+Screenshot preview can be added from a local file (for example `assets/sidebar-preview.png`).
 
 ## Interface
 
