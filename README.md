@@ -8,7 +8,7 @@ A sidebar launcher inspired by classic Windows XP folder toolbars.
 
 ## Preview
 
-Screenshot preview can be added from a local file (for example `assets/sidebar-preview.png`).
+![Sidebar Preview](assets/sidebar-preview.png)
 
 ## Interface
 
