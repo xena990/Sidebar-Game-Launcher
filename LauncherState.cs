@@ -54,7 +54,7 @@ namespace SidebarGameLauncher
             int borderB = borderColor.B;
             int iconSize = 32;
             bool hideIconLabels = false;
-            string visualStyle = "sidebar";
+            string visualStyle = "blue";
 
             try
             {
@@ -118,7 +118,7 @@ namespace SidebarGameLauncher
             }
             catch
             {
-                return new WindowStateData(defaultBounds, string.Empty, true, borderColor, 32, false, "sidebar");
+                return new WindowStateData(defaultBounds, string.Empty, true, borderColor, 32, false, "blue");
             }
 
             if (width < 180)
@@ -143,9 +143,13 @@ namespace SidebarGameLauncher
 
             borderColor = Color.FromArgb(ClampByte(borderR), ClampByte(borderG), ClampByte(borderB));
             Rectangle bounds = ClampToScreen(new Rectangle(left, top, width, height));
-            if (!string.Equals(visualStyle, "classic", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(visualStyle, "classic", StringComparison.OrdinalIgnoreCase))
             {
-                visualStyle = "sidebar";
+                visualStyle = "green";
+            }
+            else if (!string.Equals(visualStyle, "green", StringComparison.OrdinalIgnoreCase))
+            {
+                visualStyle = "blue";
             }
 
             return new WindowStateData(bounds, lastFolder, topMost, borderColor, iconSize, hideIconLabels, visualStyle);
@@ -174,7 +178,7 @@ namespace SidebarGameLauncher
                     "BorderB=" + state.BorderColor.B.ToString(CultureInfo.InvariantCulture),
                     "IconSize=" + state.IconSize.ToString(CultureInfo.InvariantCulture),
                     "HideIconLabels=" + state.HideIconLabels.ToString().ToLowerInvariant(),
-                    "VisualStyle=" + (state.VisualStyle ?? "sidebar")
+                    "VisualStyle=" + (state.VisualStyle ?? "blue")
                 };
 
                 File.WriteAllLines(settingsPath, lines);

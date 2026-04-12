@@ -23,6 +23,7 @@ namespace SidebarGameLauncher
         private readonly string imageCacheDir;
         private readonly Dictionary<string, string> iconIndex;
         private readonly Dictionary<string, string> caseIndex;
+        private readonly Dictionary<int, object[]> gameImagesCache;
         private readonly object sync;
         private readonly JavaScriptSerializer serializer;
 
@@ -35,6 +36,7 @@ namespace SidebarGameLauncher
             caseIndexFilePath = Path.Combine(launchBoxDir, "case_index.ini");
             iconIndex = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             caseIndex = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            gameImagesCache = new Dictionary<int, object[]>();
             sync = new object();
             serializer = new JavaScriptSerializer();
 
@@ -159,6 +161,18 @@ namespace SidebarGameLauncher
             }
 
             return true;
+        }
+
+        public bool TryGetCachedIconPath(string fileName, out string localImagePath)
+        {
+            localImagePath = string.Empty;
+            string primaryKey = NormalizeTitle(fileName);
+            if (string.IsNullOrEmpty(primaryKey))
+            {
+                return false;
+            }
+
+            return TryGetCached(primaryKey, out localImagePath);
         }
 
         private bool TryFindBestGame(List<string> queries, out int gameKey, out string bestName, out string matchedQuery)
@@ -359,27 +373,12 @@ namespace SidebarGameLauncher
         private bool TryGetPreferredImageFileName(int gameKey, out string imageFileName)
         {
             imageFileName = string.Empty;
-            string url = DetailsApiBase + gameKey.ToString(CultureInfo.InvariantCulture);
-            string json = DownloadString(url);
-            if (string.IsNullOrEmpty(json))
+            object[] imageList;
+            if (!TryGetGameImages(gameKey, out imageList))
             {
                 return false;
             }
 
-            object parsed = serializer.DeserializeObject(json);
-            var root = parsed as IDictionary<string, object>;
-            if (root == null)
-            {
-                return false;
-            }
-
-            object imagesObj;
-            if (!root.TryGetValue("gameImages", out imagesObj))
-            {
-                return false;
-            }
-
-            var imageList = imagesObj as object[];
             if (imageList == null || imageList.Length == 0)
             {
                 return false;
@@ -454,27 +453,12 @@ namespace SidebarGameLauncher
         {
             spineFileName = string.Empty;
             frontFileName = string.Empty;
-            string url = DetailsApiBase + gameKey.ToString(CultureInfo.InvariantCulture);
-            string json = DownloadString(url);
-            if (string.IsNullOrEmpty(json))
+            object[] imageList;
+            if (!TryGetGameImages(gameKey, out imageList))
             {
                 return false;
             }
 
-            object parsed = serializer.DeserializeObject(json);
-            var root = parsed as IDictionary<string, object>;
-            if (root == null)
-            {
-                return false;
-            }
-
-            object imagesObj;
-            if (!root.TryGetValue("gameImages", out imagesObj))
-            {
-                return false;
-            }
-
-            var imageList = imagesObj as object[];
             if (imageList == null || imageList.Length == 0)
             {
                 return false;
@@ -499,6 +483,51 @@ namespace SidebarGameLauncher
             }
 
             return !string.IsNullOrEmpty(spineFileName) && !string.IsNullOrEmpty(frontFileName);
+        }
+
+        private bool TryGetGameImages(int gameKey, out object[] imageList)
+        {
+            imageList = null;
+            lock (sync)
+            {
+                if (gameImagesCache.TryGetValue(gameKey, out imageList) && imageList != null && imageList.Length > 0)
+                {
+                    return true;
+                }
+            }
+
+            string url = DetailsApiBase + gameKey.ToString(CultureInfo.InvariantCulture);
+            string json = DownloadString(url);
+            if (string.IsNullOrEmpty(json))
+            {
+                return false;
+            }
+
+            object parsed = serializer.DeserializeObject(json);
+            var root = parsed as IDictionary<string, object>;
+            if (root == null)
+            {
+                return false;
+            }
+
+            object imagesObj;
+            if (!root.TryGetValue("gameImages", out imagesObj))
+            {
+                return false;
+            }
+
+            imageList = imagesObj as object[];
+            if (imageList == null || imageList.Length == 0)
+            {
+                return false;
+            }
+
+            lock (sync)
+            {
+                gameImagesCache[gameKey] = imageList;
+            }
+
+            return true;
         }
 
         private static string FindBestMatchByTypeName(object[] imageList, string[] preferredTypeOrder)
